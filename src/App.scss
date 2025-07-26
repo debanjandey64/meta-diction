@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carlito&display=swap');
+@import "./styles/variables";
+
+body {
+  background-image: url('public/wordcloud-metadiction-edited.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app-main {
+  font-family: "Carlito", sans-serif;
+  padding: 25px;
+}
+
+.app-header {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.app-logo {
+  font-size: 36px;
+  font-family: 'Cabin Sketch', cursive;
+  padding: 5px 0;
+  color: $text-color;
+}
+
+.page-body {
+  margin-top: 25px;
+}
+
+.word-search {
+  box-sizing: border-box;
+  border: 2px solid $pale-color;
+  border-radius: 5px;
+  padding-left: 10px;
+  width: 100%;
+  display: flex;
+  background-color: #FFFFFF;
+
+  input {
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+  }
+
+  button {
+    border: none;
+    border-left: 2px solid $pale-color;
+    border-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-top: 6px;
+
+    &:active {
+      background-color: #FFEFFD;
+    }
+  }
+}
+
+.word-info {
+  padding: 20px 0;
+
+  &:not(&:last-child) {
+    border-bottom: 1px solid $pale-color;
+  }
+}
+
+.word-header {
+  display: flex;
+  align-items: baseline;
+  gap: 50px;
+
+  .title {
+    font-size: 40px;
+    margin: 0 0;
+    margin-bottom: 10px;
+  }
+
+  .pronunciation {
+    font-size: 20px;
+    color: $pale-color;
+
+    &:not(&:last-child)::after {
+      content: " | ";
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.word-meanings {
+  display: grid;
+  row-gap: 10px;
+
+  elem {
+    padding: 10px 0;
+  }
+}
+
+.subtitle {
+  margin: 5px 0;
+}
+
+.explanation {
+  padding: 5px 0 5px 10px;
+
+  .example {
+    background-color: #FFEFFD;
+    border-left: 5px solid $text-color;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 0 10px 10px;
+  }
+
+  .text {
+    margin: 5px 0;
+  }
+}
+
+.synonyms, .antonyms {
+  padding: 5px 0 5px 10px;
+
+  .subtitle {
+    margin-bottom: 15px;
+  }
+}
+
+.w-link {
+  border: none;
+  background-color: inherit;
+  color: $text-color;
+  cursor: pointer;
+  font-family: "Carlito", sans-serif;
+  font-size: 1rem;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:not(&:last-child) {
+    padding-right: 10px;
+  }
+}
+
+.put-panes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: space-between;
+
+  .pane {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .pane {
+      width: 45%;
+    }
+  }
+
+  .pane h2 {
+    margin: 0 0 25px;
+  }
+}
+
+.text-input, .text-output {
+  border: 2px solid $pale-color;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 50vh;
+  padding: 10px;
+  width: 100%;
+}
+
+.text-stats {
+  display: flex;
+  margin: 10px 0 25px;
+  justify-content: left;
+  column-gap: 50px;
+}
+
+.action-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  select {
+    background-color: #FFFFFF;
+    border: 2px solid $pale-color;
+    border-radius: 5px;
+    padding: 4px;
+    width: 30%;
+  }
+}
+
+.button-set {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto;
+  margin: 25px 0;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+
+  button {
+    border: none;
+    border-radius: 5px;
+    background-color: $text-color;
+    color: #FFFFFF;
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+}
