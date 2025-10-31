@@ -113,7 +113,6 @@ body {
   padding: 5px 0 5px 10px;
 
   .example {
-    background-color: #FFEFFD;
     border-left: 5px solid $text-color;
     margin-left: 20px;
     margin-right: 20px;
@@ -195,29 +194,77 @@ body {
 
   select {
     background-color: #FFFFFF;
-    border: 2px solid $pale-color;
+    // border: 2px solid $pale-color;
     border-radius: 5px;
-    padding: 4px;
-    width: 30%;
+    font-size: 16px;
+    padding: 8px 10px;
+    width: 100%;
   }
 }
 
-.button-set {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: auto auto;
+.actions-pane {
   margin: 25px 0;
 
   @media screen and (min-width: 768px) {
     display: flex;
   }
+}
 
-  button {
-    border: none;
-    border-radius: 5px;
-    background-color: $text-color;
-    color: #FFFFFF;
-    font-size: 15px;
-    padding: 10px 20px;
+.action-set {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto auto;
+  margin-bottom: 25px;
+
+  @media screen and (min-width: 480px) {
+    grid-template-columns: auto auto auto;
+  }
+  
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    padding-right: 50px;
+    width: 60%;
+  }
+}
+
+.operations {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.action-button {
+  border: none;
+  border-radius: 5px;
+  background-color: $text-color;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: self-start;
+  gap: 5px;
+}
+
+.options-list {
+  margin-bottom: 20px;
+}
+
+.operation-opt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  input {
+    padding: 8px;
   }
 }
