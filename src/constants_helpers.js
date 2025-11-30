@@ -90,7 +90,7 @@ export const ACTION_CLASS_METHODS = {
       action: (input) => ld.snakeCase(input),
     },
   },
-  others: {
+  textManipulation: {
     trimText: {
       title: "Trim Text",
       action: (input) => input.trim(),

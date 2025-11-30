@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import WordFetch from "../components/WordFetch";
 import { BiSearchAlt } from "react-icons/bi";
 
-const Dictionary = () => {
-  const [wordInput, setWordInput] = useState("hello");
+const UrbanDict = () => {
+  const [wordInput, setWordInput] = useState("");
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Dictionary = () => {
         <input
           type="text"
           name="word-search"
-          placeholder="Type here. We already started - hello"
+          placeholder="Type here."
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               onSearch(e);
@@ -39,10 +39,10 @@ const Dictionary = () => {
       <WordFetch
         wordInput={wordInput}
         setWordInput={setWordInput}
-        variant="normal"
+        variant="urban"
       />
     </div>
   );
 };
 
-export default Dictionary;
+export default UrbanDict;
