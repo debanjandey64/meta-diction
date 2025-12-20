@@ -5,53 +5,31 @@ export const performTask = (action, input, outputTextArea) => {
   outputTextArea.current.innerHTML = output;
 };
 
-export const changeToUpperCase = (input, outputTextArea) => {
-  const output = input.toUpperCase();
-  outputTextArea.current.innerHTML = output;
+const getReversedItem = (input, inp_delim = "\n", out_delim = "\n") => {
+  return input.split(inp_delim).reverse().join(out_delim);
 };
 
-export const changeToLowerCase = (input, outputTextArea) => {
-  const output = input.toLowerCase();
-  outputTextArea.current.innerHTML = output;
-};
+const wrapText = (text, maxLength) => {
+  const words = text.split(/\s+/);
+  const lines = [];
+  let currentLine = "";
 
-export const changeToTitleCase = (input, outputTextArea) => {
-  const output = input.replace(
-    /\w\S*/g,
-    (str) => str.charAt(0).toUpperCase() + str.substring(1).toLowerCase()
-  );
-  outputTextArea.current.innerHTML = output;
-};
+  for (const word of words) {
+    // If adding the word exceeds the limit, push current line
+    if ((currentLine + " " + word).trim().length > maxLength) {
+      lines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = currentLine ? currentLine + " " + word : word;
+    }
+  }
 
-export const changeToCamelCase = (input, outputTextArea) => {
-  const output = ld.camelCase(input);
-  outputTextArea.current.innerHTML = output;
-};
+  // Push remaining text
+  if (currentLine) {
+    lines.push(currentLine);
+  }
 
-export const changeToPascalCase = (input, outputTextArea) => {
-  const output =
-    input.charAt(0).toUpperCase() + ld.camelCase(input.substring(1));
-  outputTextArea.current.innerHTML = output;
-};
-
-export const changeToKebabCase = (input, outputTextArea) => {
-  const output = ld.kebabCase(input);
-  outputTextArea.current.innerHTML = output;
-};
-
-export const changeToSnakeCase = (input, outputTextArea) => {
-  const output = ld.snakeCase(input);
-  outputTextArea.current.innerHTML = output;
-};
-
-export const trimText = (input, outputTextArea) => {
-  const output = input.trim();
-  outputTextArea.current.innerHTML = output;
-};
-
-export const reverseText = (input, outputTextArea, delim = "") => {
-  const output = input.split(delim).reverse().join(delim);
-  outputTextArea.current.innerHTML = output;
+  return lines.join("\n");
 };
 
 export const ACTION_CLASS_METHODS = {
@@ -95,11 +73,56 @@ export const ACTION_CLASS_METHODS = {
       title: "Trim Text",
       action: (input) => input.trim(),
     },
+    wrapText: {
+      title: "Wrap Text",
+      action: (input) => {
+        const delim = document.querySelector(`#maxLength`).value;
+        return wrapText(input, delim);
+      },
+      options: {
+        maxLength: {
+          title: "Enter maximum text length in a line",
+          type: "text",
+        },
+      },
+    },
+    splitTextToList: {
+      title: "Split Text to List",
+      action: (input) => {
+        const delim = document.querySelector(`#delim`).value;
+        return getReversedItem(input, delim);
+      },
+      options: {
+        delim: {
+          title: "Enter delimiter",
+          type: "text",
+        },
+      },
+    },
     reverseText: {
       title: "Reverse Text",
       action: (input) => {
         const delim = document.querySelector(`#delim`).value;
-        return input.split(delim).reverse().join(delim);
+        return getReversedItem(input, delim, delim);
+      },
+      options: {
+        delim: {
+          title: "Enter delimiter",
+          type: "text",
+        },
+      },
+    },
+  },
+  listManipulation: {
+    reverseList: {
+      title: "Reverse List",
+      action: (input) => getReversedItem(input),
+    },
+    joinList: {
+      title: "Join List",
+      action: (input) => {
+        const delim = document.querySelector(`#delim`).value;
+        return getReversedItem(input, "\n", delim);
       },
       options: {
         delim: {
