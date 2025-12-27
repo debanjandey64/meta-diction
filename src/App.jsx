@@ -14,10 +14,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <main className="app-main">
-        <header className="app-header">
-          <span className="app-logo">MetaDiction</span>
-        </header>
-
         <NavBar />
 
         <article className="app-body">

@@ -1,0 +1,71 @@
+@use "variables" as vars;
+
+.app-logo {
+  font-size: 2.25rem;
+  font-family: 'Cabin Sketch', cursive;
+  padding: 5px 0;
+  color: vars.$text-color;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: vars.$text-color;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: vars.$text-color;
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.nav-links a:hover {
+  font-weight: 600;
+}
+
+/* Hamburger menu */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    background: #f9e3f2;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
+  #menu-toggle:checked+.menu-icon+.nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 0.8rem 0;
+  }
+}

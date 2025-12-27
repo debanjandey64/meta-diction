@@ -6,9 +6,6 @@ const UrbanDictWord = ({ wordInfo, onSearch }) => {
       <div key={ix} className="word-info">
         <div className="word-header">
           <h1 className="title">{wi.word}</h1>
-          <div className="pronunciation">
-            Contributed by {wi.contributor} on {wi.date}
-          </div>
         </div>
         <div className="word-meanings">
           <div className="explanation">

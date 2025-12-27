@@ -1,6 +1,8 @@
+@use "styles/navbar";
+
+@use "./styles/variables" as vars;
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Carlito&display=swap');
-@import "./styles/variables";
 
 body {
   background-image: url('/wordcloud-metadiction-edited.jpg');
@@ -15,27 +17,13 @@ body {
   padding: 25px;
 }
 
-.app-header {
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.app-logo {
-  font-size: 36px;
-  font-family: 'Cabin Sketch', cursive;
-  padding: 5px 0;
-  color: $text-color;
-}
-
 .page-body {
   margin-top: 25px;
 }
 
 .word-search {
   box-sizing: border-box;
-  border: 2px solid $pale-color;
+  border: 2px solid vars.$pale-color;
   border-radius: 5px;
   padding-left: 10px;
   width: 100%;
@@ -52,7 +40,7 @@ body {
 
   button {
     border: none;
-    border-left: 2px solid $pale-color;
+    border-left: 2px solid vars.$pale-color;
     border-radius: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -68,7 +56,7 @@ body {
   padding: 20px 0;
 
   &:not(&:last-child) {
-    border-bottom: 1px solid $pale-color;
+    border-bottom: 1px solid vars.$pale-color;
   }
 }
 
@@ -85,7 +73,7 @@ body {
 
   .pronunciation {
     font-size: 20px;
-    color: $pale-color;
+    color: vars.$pale-color;
 
     &:not(&:last-child)::after {
       content: " | ";
@@ -112,7 +100,7 @@ body {
   padding: 5px 0 5px 10px;
 
   .example {
-    border-left: 5px solid $text-color;
+    border-left: 5px solid vars.$text-color;
     margin-left: 20px;
     margin-right: 20px;
     padding: 10px 0 10px 10px;
@@ -123,7 +111,8 @@ body {
   }
 }
 
-.synonyms, .antonyms {
+.synonyms,
+.antonyms {
   padding: 5px 0 5px 10px;
 
   .subtitle {
@@ -134,7 +123,7 @@ body {
 .w-link {
   border: none;
   background-color: inherit;
-  color: $text-color;
+  color: vars.$text-color;
   cursor: pointer;
   font-family: "Carlito", sans-serif;
   font-size: 1rem;
@@ -170,8 +159,9 @@ body {
   }
 }
 
-.text-input, .text-output {
-  border: 2px solid $pale-color;
+.text-input,
+.text-output {
+  border: 2px solid vars.$pale-color;
   border-radius: 5px;
   box-sizing: border-box;
   height: 50vh;
@@ -218,7 +208,7 @@ body {
   @media screen and (min-width: 480px) {
     grid-template-columns: auto auto auto;
   }
-  
+
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     padding-right: 50px;
@@ -239,7 +229,7 @@ body {
   border: none;
   border-radius: 2px;
   box-shadow: 0px 2px 3px -1px #000000;
-  background-color: $text-color;
+  background-color: vars.$text-color;
   color: #FFFFFF;
   cursor: pointer;
   font-size: 15px;
@@ -268,149 +258,5 @@ body {
 
   input {
     padding: 8px;
-  }
-}
-
-.navbar {
-  background-color: $text-color;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar-container {
-  box-shadow: 0px 2px 3px -1px #000000;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-}
-
-.nav-links li {
-  display: block;
-  margin: 0 20px;
-}
-
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease;
-}
-
-.nav-link::after {
-  content: "";
-  width: 0;
-  height: 3px;
-  background: #FFFFFF;
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #FFFFFF;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Hamburger Menu Styling */
-.mobile-menu-icon {
-  display: none;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.hamburger {
-  width: 30px;
-  height: 22px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 1001;
-}
-
-.hamburger span {
-  width: 90%;
-  height: 2px;
-  background: #fff;
-  border-radius: 1px;
-  transition: all 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 9px;
-  position: absolute;
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 9px;
-  position: absolute;
-}
-
-/* Mobile Responsive Styling */
-@media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .nav-links-mobile {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    width: 92%;
-    background-color: $text-color;
-    z-index: 1000;
-    animation: slideIn 0.5s ease forwards;
-  }
-
-  .nav-links-mobile li {
-    list-style: none;
-    padding: 10px 0;
-    margin-left: -15px;
-  }
-
-  .mobile-menu-icon {
-    display: block;
-  }
-
-  .help-text {
-    color: #FFFFFF;
-    display: block;
-    margin-right: 20px;
-  }
-}
-
-/* Animations */
-@keyframes slideIn {
-  from {
-    right: -100%;
-  }
-
-  to {
-    right: 0;
   }
 }
